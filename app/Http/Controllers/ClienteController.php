@@ -15,7 +15,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        return view('clientes.index', [
+            'clientes' => Cliente::all(),
+        ]);
     }
 
     /**
@@ -25,7 +27,9 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientes.create', [
+            'cliente' => new Cliente(),
+        ]);
     }
 
     /**
@@ -36,7 +40,11 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        //
+        $cliente = new Cliente($request->validated());
+        $cliente->save();
+
+        return redirect()->route('clientes.index')
+            ->with('success', "Cliente $cliente->nombre creado correctamente");
     }
 
     /**
@@ -47,7 +55,9 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        return view('clientes.show', [
+            'cliente' => $cliente,
+        ]);
     }
 
     /**
@@ -58,7 +68,9 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        return view('clientes.edit', [
+            'cliente' => $cliente,
+        ]);
     }
 
     /**
@@ -70,7 +82,11 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, Cliente $cliente)
     {
-        //
+        $cliente->fill($request->validated());
+        $cliente->save();
+
+        return redirect()->route('clientes.index')
+            ->with('success', "Cliente $cliente->nombre editado correctamente");
     }
 
     /**
@@ -81,6 +97,10 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->cuentas()->detach();
+        $cliente->delete();
+
+        return redirect()->route('clientes.index')
+            ->with('success', "Cliente $cliente->nombre borrado correctamente");
     }
 }

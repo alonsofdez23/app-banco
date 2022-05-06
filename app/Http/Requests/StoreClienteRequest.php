@@ -13,7 +13,7 @@ class StoreClienteRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'dni' => 'required|unique:clientes|regex:/^\d{8}[a-zA-Z]$/',
+            'nombre' => 'required|string',
         ];
     }
 }

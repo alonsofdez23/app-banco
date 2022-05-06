@@ -23,6 +23,6 @@ class Cliente extends Model
      */
     public function cuentas()
     {
-        return $this->belongsToMany(Cuenta::class);
+        return $this->belongsToMany(Cuenta::class, 'titulares');
     }
 }

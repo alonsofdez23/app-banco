@@ -32,6 +32,6 @@ class Cuenta extends Model
      */
     public function movimientos()
     {
-        return $this->hasMany(Movimiento::class);
+        return $this->hasMany(Movimiento::class, 'titulares');
     }
 }
