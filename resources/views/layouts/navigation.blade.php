@@ -15,6 +15,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if (Auth::user()->name == 'admin')
+                        <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
+                            Clientes
+                        </x-nav-link>
+                        <x-nav-link :href="route('cuentas.create')" :active="request()->routeIs('cuentas.create')">
+                            Crear cuenta
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -66,6 +74,14 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if (Auth::user()->name == 'admin')
+                <x-responsive-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
+                    Clientes
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('cuentas.create')" :active="request()->routeIs('cuentas.create')">
+                    Crear cuenta
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

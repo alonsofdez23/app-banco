@@ -70,6 +70,11 @@
                             </div>
                         @endif
                     </div>
+                    <div class="flex justify-center">
+                        <a href="{{ route('clientes.create') }}">
+                            <button class="mt-5 py-1 px-4 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800">Añadir nuevo cliente</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
