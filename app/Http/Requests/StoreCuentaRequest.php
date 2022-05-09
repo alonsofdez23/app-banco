@@ -13,7 +13,7 @@ class StoreCuentaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreCuentaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'numero' => 'required|unique:cuentas|digits:20',
+            'cliente' => 'required'
         ];
     }
 }

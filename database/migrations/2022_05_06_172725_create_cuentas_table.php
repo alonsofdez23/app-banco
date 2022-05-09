@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('cuentas', function (Blueprint $table) {
             $table->id();
-            $table->decimal('numero', 18, 0);
+            $table->decimal('numero', 20, 0);
             $table->timestamps();
         });
     }

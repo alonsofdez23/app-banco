@@ -22,7 +22,7 @@ class Cuenta extends Model
      */
     public function clientes()
     {
-        return $this->belongsToMany(Cliente::class);
+        return $this->belongsToMany(Cliente::class, 'titulares');
     }
 
     /**
@@ -32,6 +32,6 @@ class Cuenta extends Model
      */
     public function movimientos()
     {
-        return $this->hasMany(Movimiento::class, 'titulares');
+        return $this->hasMany(Movimiento::class);
     }
 }

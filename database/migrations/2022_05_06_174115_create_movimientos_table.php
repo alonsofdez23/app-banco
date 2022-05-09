@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('cuenta_id')->constrained('cuentas');
             $table->dateTime('fecha');
             $table->string('concepto');
-            $table->decimal('importe', 15);
+            $table->decimal('importe', 15, 2);
             $table->timestamps();
         });
     }
