@@ -19,8 +19,8 @@
                         <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
                             Clientes
                         </x-nav-link>
-                        <x-nav-link :href="route('cuentas.create')" :active="request()->routeIs('cuentas.create')">
-                            Crear cuenta
+                        <x-nav-link :href="route('cuentas.index')" :active="request()->routeIs('cuentas.index')">
+                            Cuentas
                         </x-nav-link>
                     @endif
                 </div>
@@ -78,8 +78,8 @@
                 <x-responsive-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
                     Clientes
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('cuentas.create')" :active="request()->routeIs('cuentas.create')">
-                    Crear cuenta
+                <x-responsive-nav-link :href="route('cuentas.index')" :active="request()->routeIs('cuentas.index')">
+                    Cuentas
                 </x-responsive-nav-link>
             @endif
         </div>

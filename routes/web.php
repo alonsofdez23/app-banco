@@ -27,19 +27,28 @@ Route::resource('/clientes', ClienteController::class)
     ->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('cuentas/create', [CuentaController::class, 'create'])
+    Route::get('/cuentas', [CuentaController::class, 'index'])
+        ->name('cuentas.index');
+
+    Route::get('/cuentas/create', [CuentaController::class, 'create'])
         ->name('cuentas.create');
 
-    Route::post('cuentas/', [CuentaController::class, 'store'])
+    Route::post('/cuentas', [CuentaController::class, 'store'])
         ->name('cuentas.store');
 
-    Route::get('cuentas/{cuenta}', [CuentaController::class, 'show'])
+    Route::get('/cuentas/{cuenta}', [CuentaController::class, 'show'])
         ->name('cuentas.show');
 
-    Route::post('cuentas/{cuenta}/titulares', [CuentaController::class, ''])
-        ->name('cuentas.');
+    Route::get('/cuentas/{cuenta}/addtitular', [CuentaController::class, 'addtitular'])
+        ->name('cuentas.addtitular');
 
-    Route::delete('cuentas/{cuenta}/titulares', [CuentaController::class, ''])
+    Route::put('/cuentas/{cuenta}', [CuentaController::class, 'addtitularupdate'])
+        ->name('cuentas.addtitular.update');
+
+    Route::get('/cuentas/{cuenta}/titulares', [CuentaController::class, 'titulares'])
+        ->name('cuentas.titulares');
+
+    Route::delete('/cuentas/{cuenta}/titulares/{cliente}', [CuentaController::class, 'deleteTitular'])
         ->name('cuentas.titulares.delete');
 });
 

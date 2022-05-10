@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateClienteRequest extends FormRequest
 {
@@ -24,7 +25,8 @@ class UpdateClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            'dni' => 'required|unique:clientes|regex:/^\d{8}[a-zA-Z]$/',
+            // Arreglar rule unique
+            'dni' => 'required|regex:/^\d{8}[a-zA-Z]$/',
             'nombre' => 'required|string',
         ];
     }

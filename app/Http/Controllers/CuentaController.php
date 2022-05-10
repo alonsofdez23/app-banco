@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCuentaRequest;
 use App\Http\Requests\UpdateCuentaRequest;
 use App\Models\Cliente;
 use App\Models\Cuenta;
+use Illuminate\Http\Request;
 
 class CuentaController extends Controller
 {
@@ -16,7 +17,9 @@ class CuentaController extends Controller
      */
     public function index()
     {
-        //
+        return view('cuentas.index', [
+            'cuentas' => Cuenta::all(),
+        ]);
     }
 
     /**
@@ -47,7 +50,7 @@ class CuentaController extends Controller
 
         $cuenta->clientes()->attach($request->cliente);
 
-        return redirect()->route('clientes.index')
+        return redirect()->route('cuentas.index')
             ->with('success', "Cuenta $cuenta->numero creada correctamente");
     }
 
@@ -96,5 +99,36 @@ class CuentaController extends Controller
     public function destroy(Cuenta $cuenta)
     {
         //
+    }
+
+    public function titulares(Cuenta $cuenta)
+    {
+        return view('cuentas.titulares', [
+            'cuenta' => $cuenta,
+        ]);
+    }
+
+    public function addtitular(Cuenta $cuenta)
+    {
+        $clientes = Cliente::all();
+
+        return view('cuentas.addtitular', [
+            'cuenta' => $cuenta,
+            'clientes' => $clientes,
+        ]);
+    }
+
+    public function addtitularupdate(Request $request, Cuenta $cuenta)
+    {
+        $cuenta->clientes()->attach($request->cliente);
+
+        return redirect()->route('cuentas.titulares', $cuenta);
+    }
+
+    public function deleteTitular(Cuenta $cuenta, Cliente $cliente)
+    {
+        $cliente->cuentas()->detach($cuenta);
+
+        return redirect()->route('cuentas.titulares', $cuenta);
     }
 }
