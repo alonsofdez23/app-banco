@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 Route::resource('/clientes', ClienteController::class)
     ->middleware('auth');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'can:solo-admin'])->group(function () {
     Route::get('/cuentas', [CuentaController::class, 'index'])
         ->name('cuentas.index');
 
