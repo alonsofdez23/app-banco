@@ -50,6 +50,18 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/cuentas/{cuenta}/titulares/{cliente}', [CuentaController::class, 'deleteTitular'])
         ->name('cuentas.titulares.delete');
+
+    Route::get('/cuentas/{cuenta}/addmovimiento', [CuentaController::class, 'addmovimiento'])
+        ->name('cuentas.addmovimiento');
+
+    Route::post('/cuentas/{cuenta}', [CuentaController::class, 'addmovimientostore'])
+        ->name('cuentas.addmovimiento.store');
+
+    Route::get('/cuentas/{cuenta}/movimientos', [CuentaController::class, 'movimientos'])
+        ->name('cuentas.movimientos');
+
+    Route::delete('/cuentas/{cuenta}/movimientos/{movimiento}', [CuentaController::class, 'deleteMovimiento'])
+        ->name('cuentas.movimientos.delete');
 });
 
 require __DIR__.'/auth.php';

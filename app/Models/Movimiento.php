@@ -11,6 +11,13 @@ class Movimiento extends Model
 
     protected $table = 'movimientos';
 
+    protected $fillable = [
+        'cuenta_id',
+        'fecha',
+        'concepto',
+        'importe',
+    ];
+
     /**
      * Get the cuenta that owns the Movimiento
      *
