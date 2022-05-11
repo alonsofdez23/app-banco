@@ -47,7 +47,7 @@
                                             <tr class="whitespace-nowrap">
                                                 <td class="px-6 py-4">
                                                     <div class="text-sm font-medium text-gray-900">
-                                                        {{ $movimiento->created_at->tz('Europe/Madrid')->isoFormat('L, HH:mm') }}
+                                                        {{ $movimiento->fecha->tz('Europe/Madrid')->isoFormat('L, HH:mm') }}
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4">

@@ -25,8 +25,7 @@ class UpdateClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            // Arreglar rule unique
-            'dni' => 'required|regex:/^\d{8}[a-zA-Z]$/',
+            'dni' => 'required|regex:/^\d{8}[a-zA-Z]$/|unique:clientes,dni,' . $this->cliente->id,
             'nombre' => 'required|string',
         ];
     }

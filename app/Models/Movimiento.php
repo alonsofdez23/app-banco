@@ -11,6 +11,10 @@ class Movimiento extends Model
 
     protected $table = 'movimientos';
 
+    protected $casts = [
+        'fecha' => 'datetime:Y-m-d',
+    ];
+
     protected $fillable = [
         'cuenta_id',
         'fecha',
