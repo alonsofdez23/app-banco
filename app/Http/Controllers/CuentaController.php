@@ -112,12 +112,7 @@ class CuentaController extends Controller
 
     public function addtitular(Cuenta $cuenta)
     {
-        $array = [];
-        foreach ($cuenta->clientes as $cliente) {
-            array_push($array, $cliente->id);
-        };
-
-        $clientes = Cliente::all()->whereNotIn('id', $array);
+        $clientes = Cliente::all()->diff($cuenta->clientes);
 
         return view('cuentas.addtitular', [
             'cuenta' => $cuenta,
