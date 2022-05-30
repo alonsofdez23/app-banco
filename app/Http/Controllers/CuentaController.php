@@ -131,9 +131,14 @@ class CuentaController extends Controller
 
     public function deleteTitular(Cuenta $cuenta, Cliente $cliente)
     {
-        $cliente->cuentas()->detach($cuenta);
+        if ($cuenta->clientes->count() > 1) {
+            $cliente->cuentas()->detach($cuenta);
 
-        return redirect()->route('cuentas.titulares', $cuenta);
+            return redirect()->route('cuentas.titulares', $cuenta);
+        } else {
+            return redirect()->route('cuentas.titulares', $cuenta)
+                ->with('error', 'Las cuentas debe tener un titular al menos');
+        };
     }
 
     public function movimientos(Cuenta $cuenta)
