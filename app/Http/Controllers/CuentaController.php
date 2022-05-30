@@ -100,7 +100,9 @@ class CuentaController extends Controller
      */
     public function destroy(Cuenta $cuenta)
     {
-        //
+        $cuenta->delete();
+
+        return redirect()->route('cuentas.index');
     }
 
     public function titulares(Cuenta $cuenta)

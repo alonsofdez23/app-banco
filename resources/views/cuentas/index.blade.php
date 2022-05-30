@@ -56,11 +56,11 @@
                                                     <form action="{{ route('cuentas.movimientos', $cuenta) }}" method="GET">
                                                         <button class="py-1 px-4 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800">Movimientos</button>
                                                     </form>
-                                                    {{-- <form action="{{ route('clientes.destroy', $cliente) }}" method="POST">
+                                                    <form action="{{ route('cuentas.destroy', $cuenta) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="py-1 px-4 text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded text-sm text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Borrar</button>
-                                                    </form> --}}
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

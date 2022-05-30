@@ -39,6 +39,9 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
     Route::get('/cuentas/{cuenta}', [CuentaController::class, 'show'])
         ->name('cuentas.show');
 
+    Route::any('/cuentas/{cuenta}', [CuentaController::class, 'destroy'])
+        ->name('cuentas.destroy');
+
     Route::get('/cuentas/{cuenta}/addtitular', [CuentaController::class, 'addtitular'])
         ->name('cuentas.addtitular');
 
