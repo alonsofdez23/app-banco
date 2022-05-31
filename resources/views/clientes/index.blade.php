@@ -29,6 +29,7 @@
                                     <tr>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">DNI</th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Edad</th>
                                         <th scope="col" class="relative px-6 py-3">
                                         <span class="sr-only">Edit/Delete</span>
                                         </th>
@@ -47,6 +48,11 @@
                                                 <td class="px-6 py-4">
                                                     <div class="text-sm font-medium text-gray-900">
                                                         {{ $cliente->nombre }}
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    <div class="text-sm font-medium text-gray-900">
+                                                        {{ $cliente->fnacimiento->age }}
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 inline-flex">

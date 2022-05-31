@@ -47,6 +47,21 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div>
+                                <x-label for="fnacimiento" value="Fecha Nacimiento" />
+
+                                <x-input
+                                id="fnacimiento"
+                                class="block mt-1 w-full"
+                                type="date"
+                                name="fnacimiento"
+                                value="{{ old('fnacimiento') }}" />
+                                @error('fnacimiento')
+                                    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
 
                             <div class="flex justify-center mt-4">
                                 <x-button>

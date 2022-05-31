@@ -11,9 +11,14 @@ class Cliente extends Model
 
     protected $table = 'clientes';
 
+    protected $casts = [
+        'fnacimiento' => 'datetime:Y-m-d',
+    ];
+
     protected $fillable = [
         'dni',
         'nombre',
+        'fnacimiento',
     ];
 
     /**

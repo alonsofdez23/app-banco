@@ -26,6 +26,7 @@ class StoreClienteRequest extends FormRequest
         return [
             'dni' => 'required|unique:clientes|regex:/^\d{8}[a-zA-Z]$/',
             'nombre' => 'required|string',
+            'fnacimiento' => 'required|date',
         ];
     }
 }

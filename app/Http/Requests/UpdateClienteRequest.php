@@ -27,6 +27,7 @@ class UpdateClienteRequest extends FormRequest
         return [
             'dni' => 'required|regex:/^\d{8}[a-zA-Z]$/|unique:clientes,dni,' . $this->cliente->id,
             'nombre' => 'required|string',
+            'fnacimiento' => 'required|date',
         ];
     }
 }
