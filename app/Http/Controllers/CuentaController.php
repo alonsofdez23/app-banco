@@ -102,7 +102,8 @@ class CuentaController extends Controller
     {
         $cuenta->delete();
 
-        return redirect()->route('cuentas.index');
+        return redirect()->route('cuentas.index')
+            ->with('success', "Cuenta $cuenta->numero borrada correctamente");
     }
 
     public function titulares(Cuenta $cuenta)
