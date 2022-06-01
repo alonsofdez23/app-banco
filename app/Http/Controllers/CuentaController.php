@@ -31,7 +31,7 @@ class CuentaController extends Controller
      */
     public function create()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::where('fnacimiento', '<', now()->subYears(18))->get();
 
         return view('cuentas.create', [
             'cuenta' => new Cuenta(),
@@ -132,14 +132,24 @@ class CuentaController extends Controller
 
     public function deleteTitular(Cuenta $cuenta, Cliente $cliente)
     {
-        if ($cuenta->clientes->count() > 1) {
-            $cliente->cuentas()->detach($cuenta);
+        $cliente->cuentas()->detach($cuenta);
 
-            return redirect()->route('cuentas.titulares', $cuenta);
-        } else {
+        if ($cuenta->clientes->isEmpty()){
+            $cliente->cuentas()->attach($cuenta);
+
             return redirect()->route('cuentas.titulares', $cuenta)
-                ->with('error', 'Las cuentas debe tener un titular al menos');
+                ->with('error', 'Las cuentas debe tener al menos un titular');
         };
+
+        if ($cuenta->clientes->diff(Cliente::menores())->isEmpty()) {
+            $cliente->cuentas()->attach($cuenta);
+
+            return redirect()->route('cuentas.titulares', $cuenta)
+                ->with('error', 'Las cuentas debe tener un titular mayor de edad al menos');
+        };
+
+        return redirect()->route('cuentas.titulares', $cuenta)
+            ->with('success', "$cliente->nombre borrado correctamente");
     }
 
     public function movimientos(Cuenta $cuenta)

@@ -30,4 +30,19 @@ class Cliente extends Model
     {
         return $this->belongsToMany(Cuenta::class, 'titulares');
     }
+
+    public static function menores()
+    {
+        return static::where('fnacimiento', '>', now()->subYears(18))->get();
+    }
+
+    public static function adultos()
+    {
+        return static::where('fnacimiento', '<', now()->subYears(18))->get();
+    }
+
+    public function esmenor()
+    {
+        return $this->fnacimiento->age < 18;
+    }
 }
