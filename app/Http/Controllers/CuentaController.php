@@ -31,11 +31,9 @@ class CuentaController extends Controller
      */
     public function create()
     {
-        $clientes = Cliente::where('fnacimiento', '<', now()->subYears(18))->get();
-
         return view('cuentas.create', [
             'cuenta' => new Cuenta(),
-            'clientes' => $clientes,
+            'clientes' => Cliente::adultos(),
         ]);
     }
 
