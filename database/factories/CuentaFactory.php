@@ -17,7 +17,7 @@ class CuentaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'numero' => $this->faker->unique()->numerify('####################'),
         ];
     }
 }
